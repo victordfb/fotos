@@ -1,2 +1,6 @@
 fotos.iml
 .idea/*
+.DS_Store
+src/.DS_Store
+src/test/.DS_Store
+target/
