@@ -1,5 +1,6 @@
 package br.jus.tst.juridico.fotos;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,11 +16,17 @@ public class Pessoa {
         this.imagens = imagens;
     }
 
-    public String getCodigo() {
+    public Pessoa(String codigo, String nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.imagens = new HashSet<>();
+    }
+
+    private String getCodigo() {
         return codigo;
     }
 
-    public String getNome() {
+    private String getNome() {
         return nome;
     }
 

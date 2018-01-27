@@ -4,5 +4,5 @@ import java.util.Set;
 
 public interface ImagenRepository {
 
-    void carregarImagens(Set<Pessoa> pessoas, Tamanho tamanho);
+    void carregarImagens(Set<Pessoa> pessoas, Tamanho... tamanho);
 }

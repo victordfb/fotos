@@ -25,7 +25,7 @@ public class PessoaController {
     public Pessoa inserir(@RequestParam(name = "codigo") String codigo,
                           @RequestParam(name = "nome") String nome) {
 
-        Pessoa pessoa = new Pessoa(codigo, nome, imagens);
+        Pessoa pessoa = new Pessoa(codigo, nome);
         pessoaServico.inserir(pessoa);
         return pessoa;
     }

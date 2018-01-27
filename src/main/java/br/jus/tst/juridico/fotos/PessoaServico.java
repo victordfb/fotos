@@ -18,7 +18,6 @@ public class PessoaServico {
     }
 
     public void inserir(Pessoa pessoa) {
-
         pessoaRepository.inserir(pessoa);
     }
 
