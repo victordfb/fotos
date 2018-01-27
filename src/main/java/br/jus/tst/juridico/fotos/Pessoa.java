@@ -2,6 +2,7 @@ package br.jus.tst.juridico.fotos;
 
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Pessoa {
@@ -32,6 +33,14 @@ public class Pessoa {
 
     public String getNome() {
         return nome;
+    }
+
+    public Optional<byte[]> getImagemEmBytes(Tamanho tamanho) {
+        Optional<Imagem> imagemOpt = imagens.stream()
+                .filter(imagem -> imagem.getTamanho() == tamanho)
+                .findFirst();
+
+        return imagemOpt.map(Imagem::getBytes);
     }
 
     @Override

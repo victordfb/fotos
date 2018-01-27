@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 public class PessoaController {
@@ -21,8 +22,10 @@ public class PessoaController {
     private PessoaServico pessoaServico;
 
     @RequestMapping("/pessoas")
-    public Set<Pessoa> pessoas() {
-        return pessoaServico.pessoas();
+    public Set<PessoaDTO> pessoas() {
+        return pessoaServico.pessoas().stream()
+                .map(PessoaDTO::new)
+                .collect(Collectors.toSet());
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/pessoas")

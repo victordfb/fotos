@@ -1,6 +1,9 @@
 package br.jus.tst.juridico.fotos;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class Imagem {
 
@@ -14,5 +17,16 @@ public class Imagem {
 
     public Tamanho getTamanho() {
         return tamanho;
+    }
+
+    public byte[] getBytes() {
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+
+            ImageIO.write(bufferedImage, "jpg", baos);
+            baos.flush();
+            return baos.toByteArray();
+        } catch (IOException e) {
+            throw new IllegalStateException("Erro ao pegar bytes de imagem.", e);
+        }
     }
 }
