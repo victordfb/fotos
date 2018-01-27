@@ -2,6 +2,7 @@ package br.jus.tst.juridico.aplicacao;
 
 import br.jus.tst.juridico.fotos.Pessoa;
 
+@SuppressWarnings("unused")
 public class PessoaDTO {
 
     private final String codigo;
