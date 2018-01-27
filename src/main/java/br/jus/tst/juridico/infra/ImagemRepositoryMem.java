@@ -6,6 +6,7 @@ import br.jus.tst.juridico.fotos.Pessoa;
 import br.jus.tst.juridico.fotos.Tamanho;
 import org.springframework.stereotype.Repository;
 
+import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,13 @@ public class ImagemRepositoryMem implements ImagenRepository {
 
     public ImagemRepositoryMem() {
         this.imagens = new HashMap<>();
+    }
+
+    @Override
+    public void inserir(String codigo, BufferedImage imagemBuff) {
+        Set<Imagem> imagens = this.imagens.getOrDefault(codigo, new HashSet<>());
+        imagens.add(new Imagem(Tamanho.PEQUENA, imagemBuff));
+        this.imagens.putIfAbsent(codigo, imagens);
     }
 
     @Override

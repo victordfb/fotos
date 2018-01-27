@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Set;
 
 @RestController
@@ -23,10 +27,23 @@ public class PessoaController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/pessoas")
     public PessoaDTO inserir(@RequestParam(name = "codigo") String codigo,
-                          @RequestParam(name = "nome") String nome) {
+                             @RequestParam(name = "nome") String nome) {
 
         Pessoa pessoa = new Pessoa(codigo, nome);
         pessoaServico.inserir(pessoa);
         return new PessoaDTO(pessoa);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/pessoas/avatar")
+    public PessoaDTO inserirAvatar(@RequestParam(name = "codigo") String codigo,
+                                   @RequestParam(name = "file") MultipartFile file) {
+
+        try {
+            BufferedImage imagem = ImageIO.read(file.getInputStream());
+            pessoaServico.inserirAvatar(codigo, imagem);
+            return new PessoaDTO(new Pessoa(codigo, ""));
+        } catch (IOException e) {
+            throw new IllegalStateException("Erro ao ler arquivo do uoload.", e);
+        }
     }
 }

@@ -3,6 +3,7 @@ package br.jus.tst.juridico.fotos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.image.BufferedImage;
 import java.util.Set;
 
 @Service
@@ -28,5 +29,10 @@ public class PessoaServico {
         imagenRepository.carregarImagens(pessoas, Tamanho.PEQUENA);
 
         return pessoas;
+    }
+
+    public void inserirAvatar(String codigo, BufferedImage bufferedImage) {
+
+        imagenRepository.inserir(codigo, bufferedImage);
     }
 }
