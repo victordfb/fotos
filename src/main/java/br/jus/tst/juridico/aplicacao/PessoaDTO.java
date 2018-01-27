@@ -1,13 +1,15 @@
 package br.jus.tst.juridico.aplicacao;
 
+import br.jus.tst.juridico.fotos.Pessoa;
+
 public class PessoaDTO {
 
     private final String codigo;
     private final String nome;
 
-    public PessoaDTO(String codigo, String nome) {
-        this.codigo = codigo;
-        this.nome = nome;
+    PessoaDTO(Pessoa pessoa) {
+        this.codigo = pessoa.getCodigo();
+        this.nome = pessoa.getNome();
     }
 
     public String getCodigo() {

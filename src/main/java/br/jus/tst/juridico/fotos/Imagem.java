@@ -11,4 +11,8 @@ public class Imagem {
         this.tamanho = tamanho;
         this.bufferedImage = bufferedImage;
     }
+
+    public Tamanho getTamanho() {
+        return tamanho;
+    }
 }

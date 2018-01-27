@@ -22,11 +22,15 @@ public class Pessoa {
         this.imagens = new HashSet<>();
     }
 
-    private String getCodigo() {
+    public void addImagens(Set<Imagem> selecionadas) {
+        imagens.addAll(selecionadas);
+    }
+
+    public String getCodigo() {
         return codigo;
     }
 
-    private String getNome() {
+    public String getNome() {
         return nome;
     }
 

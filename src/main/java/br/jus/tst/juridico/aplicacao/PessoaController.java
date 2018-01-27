@@ -22,11 +22,11 @@ public class PessoaController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/pessoas")
-    public Pessoa inserir(@RequestParam(name = "codigo") String codigo,
+    public PessoaDTO inserir(@RequestParam(name = "codigo") String codigo,
                           @RequestParam(name = "nome") String nome) {
 
         Pessoa pessoa = new Pessoa(codigo, nome);
         pessoaServico.inserir(pessoa);
-        return pessoa;
+        return new PessoaDTO(pessoa);
     }
 }

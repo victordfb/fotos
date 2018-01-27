@@ -10,11 +10,11 @@ import java.util.Set;
 @Repository
 public class PessoaRepositoryMem implements PessoaRepository {
 
-    private Set<Pessoa> pessoas = new HashSet<Pessoa>();
+    private Set<Pessoa> pessoas = new HashSet<>();
 
     @Override
     public Set<Pessoa> pessoas() {
-        return new HashSet<Pessoa>(pessoas);
+        return new HashSet<>(pessoas);
     }
 
     @Override
