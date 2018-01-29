@@ -1,0 +1,22 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 350px 100px 1fr;
+}
+
+.insere-container {
+    grid-column: 1 / span 4;
+}
+
+.titulo {
+    grid-column: 1 / span 4;
+}
+
+.listagem {
+    grid-column: 2 / span 2;
+    list-style-type: none;
+}
+
+.listagem li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
