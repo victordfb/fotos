@@ -3,10 +3,7 @@ package br.jus.tst.juridico.aplicacao;
 import br.jus.tst.juridico.fotos.Pessoa;
 import br.jus.tst.juridico.fotos.PessoaServico;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -21,6 +18,7 @@ public class PessoaController {
     @Autowired
     private PessoaServico pessoaServico;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/pessoas")
     public Set<PessoaDTO> pessoas() {
         return pessoaServico.pessoas().stream()
