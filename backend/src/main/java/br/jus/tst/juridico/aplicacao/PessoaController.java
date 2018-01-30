@@ -26,6 +26,7 @@ public class PessoaController {
                 .collect(Collectors.toSet());
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(method = RequestMethod.PUT, value = "/pessoas")
     public PessoaDTO inserir(@RequestParam(name = "codigo") String codigo,
                              @RequestParam(name = "nome") String nome) {
