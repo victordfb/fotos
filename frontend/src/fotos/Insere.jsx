@@ -24,7 +24,8 @@ export class Insere extends React.Component {
             .join('&');
 
         fetch(`http://localhost:8080/pessoas?${query}`, { method: 'PUT' })
-        .then((res) => console.log(res));
+        .then(res => res.json())
+        .then(json => this.props.onInsere(json));
     }
 
     handleSubmit(event) {

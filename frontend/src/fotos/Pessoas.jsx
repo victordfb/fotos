@@ -11,9 +11,14 @@ export class Pessoas extends React.Component {
     }
 
     componentDidMount() {
+
+        this.atualizarLista();
+    }
+
+    atualizarLista() {
         fetch("http://localhost:8080/pessoas")
         .then((res) => res.json())
-        .then((json) => this.setState({pessoas: json}));
+        .then((json) => this.setState({ pessoas: json }));
     }
 
     getPessoas() {
@@ -32,13 +37,13 @@ export class Pessoas extends React.Component {
     render() {
         return (
             <div className="container">
-                <Insere />
+                <Insere onInsere={() => this.atualizarLista() } />
                 <br />
                 <span className="titulo">Listagem de pessoas</span>
                 <ul className="listagem">
                     {this.getPessoas()}
                 </ul>
             </div>
-        )
+        );
     }
 }
