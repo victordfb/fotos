@@ -29,7 +29,6 @@ export class Insere extends React.Component {
     }
 
     handleSubmit(event) {
-
         event.preventDefault();
     }
 

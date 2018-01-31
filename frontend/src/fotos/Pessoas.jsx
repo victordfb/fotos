@@ -1,6 +1,7 @@
 import React from 'react';
 import './Pessoas.css';
 import { Insere } from './Insere';
+import camera from '../photo-camera.svg';
 
 export class Pessoas extends React.Component {
 
@@ -21,6 +22,15 @@ export class Pessoas extends React.Component {
         .then((json) => this.setState({ pessoas: json }));
     }
 
+    handleLinkClick(event) {
+        event.preventDefault();
+        console.log("Faz uma navegação...");
+    }
+
+    newLink() {
+        return <input type="image" src={camera} className="icone-imagem" alt="Gerenciar imagens" onClick={event => this.handleLinkClick(event)}></input>
+    }
+
     getPessoas() {
         return this.state.pessoas.map(pessoa => {
             return (
@@ -28,7 +38,7 @@ export class Pessoas extends React.Component {
                     <div>
                         {pessoa.nome}
                     </div>
-                    <div>Ações</div>
+                    <div>{this.newLink()}</div>
                 </li>
             )
         });
