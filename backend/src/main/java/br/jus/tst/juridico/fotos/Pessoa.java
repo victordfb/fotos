@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-public class Pessoa {
+public class Pessoa implements Comparable<Pessoa> {
 
     private final String codigo;
     private final String nome;
@@ -48,12 +48,16 @@ public class Pessoa {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(getCodigo(), pessoa.getCodigo()) &&
-                Objects.equals(getNome(), pessoa.getNome());
+        return Objects.equals(getCodigo(), pessoa.getCodigo());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCodigo(), getNome());
+        return Objects.hash(getCodigo());
+    }
+
+    @Override
+    public int compareTo(Pessoa o) {
+        return this.codigo.compareTo(o.codigo);
     }
 }

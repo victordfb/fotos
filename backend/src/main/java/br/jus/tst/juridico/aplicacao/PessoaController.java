@@ -9,7 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Set;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -20,10 +21,13 @@ public class PessoaController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/pessoas")
-    public Set<PessoaDTO> pessoas() {
-        return pessoaServico.pessoas().stream()
+    public List<PessoaDTO> pessoas() {
+        return pessoaServico.pessoas()
+                .stream()
                 .map(PessoaDTO::new)
-                .collect(Collectors.toSet());
+                .distinct()
+                .sorted(Comparator.comparing(PessoaDTO::getNome))
+                .collect(Collectors.toList());
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
