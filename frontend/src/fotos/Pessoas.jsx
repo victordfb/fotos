@@ -1,6 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import './Pessoas.css';
-import { Insere } from './Insere';
+import {Insere} from './Insere';
 import camera from '../photo-camera.svg';
 
 export class Pessoas extends React.Component {
@@ -8,7 +10,7 @@ export class Pessoas extends React.Component {
     constructor() {
         super();
 
-        this.state = { pessoas: [] }
+        this.state = {pessoas: []}
     }
 
     componentDidMount() {
@@ -18,17 +20,16 @@ export class Pessoas extends React.Component {
 
     atualizarLista() {
         fetch("http://localhost:8080/pessoas")
-        .then((res) => res.json())
-        .then((json) => this.setState({ pessoas: json }));
-    }
-
-    handleLinkClick(event) {
-        event.preventDefault();
-        console.log("Faz uma navegação...");
+            .then((res) => res.json())
+            .then((json) => this.setState({pessoas: json}));
     }
 
     newLink() {
-        return <input type="image" src={camera} className="icone-imagem" alt="Gerenciar imagens" onClick={event => this.handleLinkClick(event)}></input>
+        return (
+            <Link to="/imagens">
+                <img src={camera} className="icone-imagem" alt="Gerenciar imagens"/>
+            </Link>
+        )
     }
 
     getPessoas() {
@@ -47,8 +48,8 @@ export class Pessoas extends React.Component {
     render() {
         return (
             <div className="container">
-                <Insere onInsere={() => this.atualizarLista() } />
-                <br />
+                <Insere onInsere={() => this.atualizarLista()}/>
+                <br/>
                 <span className="titulo">Listagem de pessoas</span>
                 <ul className="listagem">
                     {this.getPessoas()}

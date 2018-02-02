@@ -6,7 +6,7 @@ export class Insere extends React.Component {
     constructor() {
         super();
 
-        this.state = { codigo: "", nome: "" }
+        this.state = {codigo: "", nome: ""}
     }
 
     updatePessoa(event) {
@@ -23,9 +23,9 @@ export class Insere extends React.Component {
             .map(k => esc(k) + '=' + esc(this.state[k]))
             .join('&');
 
-        fetch(`http://localhost:8080/pessoas?${query}`, { method: 'PUT' })
-        .then(res => res.json())
-        .then(json => this.props.onInsere(json));
+        fetch(`http://localhost:8080/pessoas?${query}`, {method: 'PUT'})
+            .then(res => res.json())
+            .then(json => this.props.onInsere(json));
     }
 
     handleSubmit(event) {
@@ -36,13 +36,15 @@ export class Insere extends React.Component {
         return (
             <div className="insere-container">
                 <span>Inserir um novo</span>
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <form onSubmit={(event) => this.handleSubmit(event)}>
                     <label htmlFor="codigo">Código</label>
-                    <input name="codigo" type="text" onChange={(event) => this.updatePessoa(event)} value={this.state.codigo}/>
+                    <input name="codigo" type="text" onChange={(event) => this.updatePessoa(event)}
+                           value={this.state.codigo}/>
                     <label htmlFor="nome">Nome</label>
-                    <input name="nome" type="text" onChange={(event) => this.updatePessoa(event)} value={this.state.nome}/>
+                    <input name="nome" type="text" onChange={(event) => this.updatePessoa(event)}
+                           value={this.state.nome}/>
                     <button onClick={() => this.inserir()}>Inserir</button>
                 </form>
             </div>
