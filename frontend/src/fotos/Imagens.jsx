@@ -7,8 +7,15 @@ export class Imagens extends React.Component {
 
     render() {
         return (
-            <div>
-                <Link to="/">Voltar</Link>
+            <div className="imagem-container">
+                <Link to="/" className="botao-voltar">Voltar</Link>
+                <br />
+                <br />
+                <div className="foto-principal">
+                    <span>Foto principal</span>
+                    <div className="quadro"></div>
+
+                </div>
             </div>
         )
     }

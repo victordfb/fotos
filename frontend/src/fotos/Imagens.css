@@ -1,0 +1,19 @@
+.imagem-container {
+    display: grid;
+    grid-template-columns: 1fr 150px 150px 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+.botao-voltar {
+    grid-column: 2 / span 2;
+}
+
+.foto-principal {
+    grid-column: 2 / span 2;
+}
+
+.quadro {
+    border: black solid 1px;
+    height: 200px;
+}
