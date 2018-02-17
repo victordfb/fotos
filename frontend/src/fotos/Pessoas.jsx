@@ -26,7 +26,7 @@ export class Pessoas extends React.Component {
 
     newLink(codigo) {
         return (
-            <Link to={`/pessoas/${codigo}/avatar`}>
+            <Link to={`/pessoas/${codigo}/upload`}>
                 <img src={camera} className="icone-imagem" alt="Gerenciar imagens"/>
             </Link>
         )

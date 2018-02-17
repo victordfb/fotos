@@ -31,6 +31,17 @@ public class PessoaController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(value = "/pessoas/{codigo}/avatar", produces = "image/jpeg")
+    public String avatar(@PathVariable(name = "codigo") String codigo) {
+        return pessoas()
+                .stream()
+                .filter(pessoa -> pessoa.getCodigo().equals(codigo))
+                .findFirst()
+                .map(PessoaDTO::getImagemBase64)
+                .orElseThrow(() -> new IllegalStateException("Avatar não encontrado"));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(method = RequestMethod.PUT, value = "/pessoas")
     public PessoaDTO inserir(@RequestParam(name = "codigo") String codigo,
                              @RequestParam(name = "nome") String nome) {
