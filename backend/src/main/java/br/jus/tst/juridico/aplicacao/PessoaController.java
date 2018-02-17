@@ -40,6 +40,7 @@ public class PessoaController {
         return new PessoaDTO(pessoa);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(method = RequestMethod.POST, value = "/pessoas/avatar")
     public PessoaDTO inserirAvatar(@RequestParam(name = "codigo") String codigo,
                                    @RequestParam(name = "file") MultipartFile file) {

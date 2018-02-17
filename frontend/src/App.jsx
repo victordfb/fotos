@@ -19,7 +19,7 @@ class App extends Component {
                     </header>
                     <br/>
                     <Route exact path="/" component={Pessoas}/>
-                    <Route path="/imagens" component={Imagens}/>
+                    <Route path="/pessoas/:codigo/avatar" component={Imagens}/>
                 </div>
             </Router>
         );
